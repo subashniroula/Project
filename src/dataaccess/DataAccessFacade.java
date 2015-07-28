@@ -12,10 +12,6 @@ import java.util.List;
 import business.Book;
 import business.BookCopy;
 
-
-
-
-
 public class DataAccessFacade implements DataAccess {
 	
 	enum StorageType {

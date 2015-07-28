@@ -2,16 +2,22 @@ package business;
 
 import java.util.HashMap;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import dataaccess.Auth;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
 import dataaccess.User;
 
-public class SystemController implements ControllerInterface {
+public class SystemController extends Application implements ControllerInterface {
 	public static Auth currentAuth = null;
+	public static Stage stageArea;
 	
 	@Override
-	public void login(String id, String password) throws LoginException {
+	public Auth login(String id, String password) throws LoginException {
 		DataAccess da = new DataAccessFacade();
 		HashMap<String, User> map = da.readUserMap();
 		if(!map.containsKey(id)) {
@@ -22,7 +28,7 @@ public class SystemController implements ControllerInterface {
 			throw new LoginException("Passord does not match password on record");
 		}
 		currentAuth = map.get(id).getAuthorization();
-		
+		return currentAuth;
 	}
 	/**
 	 * This method checks if memberId already exists -- if so, it cannot be
@@ -83,10 +89,17 @@ public class SystemController implements ControllerInterface {
 		return true;
 	}
 
-	public static void main(String[] args) throws LibrarySystemException {
-		
-	}
-	
+	 public static void main(String[] args) {
+	        Application.launch(SystemController.class, args);
+	    }
+	@Override
+	public void start(Stage stage) throws Exception {
+			stageArea=stage;   
+			Parent root = FXMLLoader.load(getClass().getResource("..\\View\\Login.fxml"));
+	        stage.setTitle("Library Management System");
+	        stage.setScene(new Scene(root, 500, 400));
+	        stage.show();
+    }
 	@Override
 	public void checkoutBook(String memberId, String isbn)
 			throws LibrarySystemException {

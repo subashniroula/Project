@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane dividerPositions="" focusTraversable="true" prefHeight="393.0" prefWidth="488.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="business.loginController">
+  <items>
+    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Librarian Panel">
+      <font>
+        <Font size="40.0" />
+      </font>
+    </Text>
+  </items>
+</SplitPane>
